@@ -1,9 +1,13 @@
 import argparse
+import easyocr
 
 from tqdm import tqdm
 from ultralytics import YOLO
 
 import supervision as sv
+
+TIMER_TOPLEFT = [1650, 30]
+TIMER_BOTTOMRIGHT = [1850, 135]
 
 def process_video(
     source_weights_path: str,
@@ -12,6 +16,7 @@ def process_video(
     confidence_threshold: float = 0.5,
     iou_threshold: float = 0.5,
 ) -> None:
+    reader = easyocr.Reader(['en'])
     model = YOLO(source_weights_path)
 
     tracker = sv.ByteTrack()
@@ -21,6 +26,10 @@ def process_video(
     video_info = sv.VideoInfo.from_video_path(video_path=source_video_path)
 
     with sv.VideoSink(target_path=target_video_path, video_info=video_info) as sink:
+        ocr_results = reader.readtext(
+            frame[TIMER_TOPLEFT[1]:TIMER_BOTTOMRIGHT[1], TIMER_TOPLEFT[0]:TIMER_BOTTOMRIGHT[0]], 
+            allowlist ='0123456789.:', detail=0
+        )
         for frame in tqdm(frame_generator, total=video_info.total_frames):
             results = model(
                 frame, verbose=False, conf=confidence_threshold, iou=iou_threshold
