@@ -26,6 +26,7 @@ def process_video(
                 frame, verbose=False, conf=confidence_threshold, iou=iou_threshold
             )[0]
             detections = sv.Detections.from_ultralytics(results)
+            detections.xyxy = sv.pad_boxes(xyxy=detections.xyxy, px=0, py=20)
             detections = tracker.update_with_detections(detections)
 
             labels = [
