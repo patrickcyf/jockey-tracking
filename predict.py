@@ -26,31 +26,34 @@ def process_video(
     video_info = sv.VideoInfo.from_video_path(video_path=source_video_path)
 
     with sv.VideoSink(target_path=target_video_path, video_info=video_info) as sink:
-        ocr_results = reader.readtext(
-            frame[TIMER_TOPLEFT[1]:TIMER_BOTTOMRIGHT[1], TIMER_TOPLEFT[0]:TIMER_BOTTOMRIGHT[0]], 
-            allowlist ='0123456789.:', detail=0
-        )
         for frame in tqdm(frame_generator, total=video_info.total_frames):
-            results = model(
-                frame, verbose=False, conf=confidence_threshold, iou=iou_threshold
-            )[0]
-            detections = sv.Detections.from_ultralytics(results)
-            detections.xyxy = sv.pad_boxes(xyxy=detections.xyxy, px=0, py=20)
-            detections = tracker.update_with_detections(detections)
-
-            labels = [
-                f"#{tracker_id} {confidence:0.2f}"
-                for tracker_id, confidence
-                in zip(detections.tracker_id, detections.confidence)
-            ]
-
-            annotated_frame = box_annotator.annotate(
-                scene=frame.copy(), detections=detections
+            ocr_results = reader.readtext(
+                frame[TIMER_TOPLEFT[1]:TIMER_BOTTOMRIGHT[1], TIMER_TOPLEFT[0]:TIMER_BOTTOMRIGHT[0]], 
+                allowlist ='0123456789.:', detail=0
             )
-            frame = label_annotator.annotate(
-                scene=annotated_frame, detections=detections, labels=labels
-            )
+            if ocr_results:
+                results = model(
+                  frame, verbose=False, conf=confidence_threshold, iou=iou_threshold
+                )[0]
+                detections = sv.Detections.from_ultralytics(results)
+                detections.xyxy = sv.pad_boxes(xyxy=detections.xyxy, px=0, py=40)
+                detections = tracker.update_with_detections(detections)
+
+                labels = [
+                  f"#{tracker_id} {confidence:0.2f}"
+                  for tracker_id, confidence
+                  in zip(detections.tracker_id, detections.confidence)
+                ]
+
+                annotated_frame = box_annotator.annotate(
+                  scene=frame.copy(), detections=detections
+                )
+                frame = label_annotator.annotate(
+                  scene=annotated_frame, detections=detections, labels=labels
+                )
+
             sink.write_frame(frame)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
