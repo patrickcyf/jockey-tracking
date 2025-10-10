@@ -1,4 +1,4 @@
-ultralytics==8.3.78
+ultralytics==8.3.208
 supervision==0.26.1
 easyocr==1.7.2
 flake8==7.0.*
