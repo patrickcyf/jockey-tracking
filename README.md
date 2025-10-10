@@ -5,9 +5,8 @@ This project attempts to detect and track jockeys during horse racing. Object de
 ## Training
 Download training data
 <pre>
-$ curl -L "https://universe.roboflow.com/ds/FrDgZN82Rn?key=3kcd17C5db" > roboflow.zip
-$ mkdir datasets
 $ cd datasets
+$ curl -L "https://app.roboflow.com/ds/vmUZYhZXDx?key=CkMIyTH1xT" > roboflow.zip
 $ unzip roboflow.zip
 $ rm roboflow.zip
 </pre>
