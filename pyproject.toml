@@ -1,0 +1,33 @@
+[tool.black]
+line-length = 79
+target-version = ["py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | datasets
+  | runs
+  | build
+  | dist
+  | venv
+  | \.env
+  | \.flake8
+)/
+'''
+
+[tool.isort]
+atomic = true
+profile = "black"
+line_length = 79
+skip_gitignore = true
+
+[tool.flake8]
+max-line-length = 79
+exclude = [".git", "__pycache__", "build", "dist"]
+extend-ignore = ["E203", "W503"]  # For compatibility with Black (optional)
+#max-complexity = 10
