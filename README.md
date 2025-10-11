@@ -6,8 +6,9 @@ This project attempts to detect and track jockeys during horse racing. Object de
 Setup environment for running/ training detector
 <pre>
 $ conda create -n jockey-tracking python==3.12
-$ pip install -r requirements.txt
 $ conda activate jockey-tracking
+$ pip install -r requirements.txt
+$ pre-commit install
 </pre>
 
 ## Training
