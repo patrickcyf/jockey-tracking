@@ -31,3 +31,5 @@ $ curl -o racing_20250131R8.mp4 https://streaminghkjc-a.akamaihd.net/hdflash/rep
 </pre>
 Detect and track jockeys
 <pre>$ python predict.py --source_weights_path runs/detect/train/weights/best.pt --source_video_path racing_20250131R8.mp4 --target_video_path output.mp4 </pre>
+<img src="examples/output.jpg" width="900px" height="500px"/>
+
