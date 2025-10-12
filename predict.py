@@ -8,6 +8,11 @@ from ultralytics import YOLO
 TIMER_TOPLEFT = [1650, 30]
 TIMER_BOTTOMRIGHT = [1850, 135]
 
+reader = easyocr.Reader(["en"])
+tracker = sv.ByteTrack()
+box_annotator = sv.BoxCornerAnnotator()
+label_annotator = sv.LabelAnnotator()
+
 
 def process_video(
     source_weights_path: str,
@@ -16,12 +21,8 @@ def process_video(
     confidence_threshold: float = 0.5,
     iou_threshold: float = 0.5,
 ) -> None:
-    reader = easyocr.Reader(["en"])
     model = YOLO(source_weights_path)
 
-    tracker = sv.ByteTrack()
-    box_annotator = sv.BoxCornerAnnotator()
-    label_annotator = sv.LabelAnnotator()
     frame_generator = sv.get_video_frames_generator(
         source_path=source_video_path
     )
