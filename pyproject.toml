@@ -25,3 +25,13 @@ atomic = true
 profile = "black"
 line_length = 79
 skip_gitignore = true
+
+[tool.flake8]
+exclude = [".git", "__pycache__", "build", "dist"]
+max-line-length = 79
+max-complexity = 10
+# Extend the ignored error codes to avoid conflicts.
+# E203 (whitespace before ':') conflicts with Black's slicing format.
+# E501 (line too long) is covered by Black's formatting and Bugbear's B950 check.
+# W503 (line break before binary operator) is how Black formats.
+extend-ignore = ["E203", "E501", "W503"]
