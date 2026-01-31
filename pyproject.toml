@@ -35,3 +35,13 @@ max-complexity = 10
 # E501 (line too long) is covered by Black's formatting and Bugbear's B950 check.
 # W503 (line break before binary operator) is how Black formats.
 extend-ignore = ["E203", "E501", "W503"]
+
+[tool.pylint.main]
+source-roots = ["."]
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+    "C0114", # missing-module-docstring
+    "C0115", # missing-class-docstring
+    "C0116", # missing-function-docstring
+]
