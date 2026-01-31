@@ -5,10 +5,7 @@ This project attempts to detect and track jockeys during horse racing. Object de
 ## Setup
 Setup environment for running/ training detector
 <pre>
-$ conda create -n jockey-tracking python==3.12
-$ conda activate jockey-tracking
-$ pip install -r requirements.txt
-$ pre-commit install
+$ uv sync --all-groups
 </pre>
 
 ## Training
@@ -20,7 +17,7 @@ $ unzip roboflow.zip
 $ rm roboflow.zip
 </pre>
 Train a detection model based on yolo12l.pt
-<pre>$ yolo detect train data=datasets/data.yaml model=yolo12l.pt epochs=120 imgsz=640 batch=6
+<pre>$ uv run yolo detect train data=datasets/data.yaml model=yolo12l.pt epochs=120 imgsz=640 batch=6
 $ ls runs/detect/train/weights/
 </pre>
 
@@ -34,6 +31,6 @@ Download pretrained model for <a href='https://drive.google.com/file/d/1ep0ty__v
 $ tar -zxvf detector_weights.tar.gz
 </pre>
 Detect and track jockeys
-<pre>$ python predict.py --source_weights_path runs/detect/train/weights/best.pt --source_video_path racing_20250131R8.mp4 --target_video_path output.mp4 </pre>
+<pre>$ un run python predict.py --source_weights_path runs/detect/train/weights/best.pt --source_video_path racing_20250131R8.mp4 --target_video_path output.mp4 </pre>
 <img src="examples/output.jpg" width="900px" height="500px"/>
 

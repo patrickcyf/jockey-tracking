@@ -14,6 +14,12 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+dependencies = [
+    "ultralytics==8.3.208",
+    "supervision==0.26.1",
+    "easyocr==1.7.2",
+]
+
 [tool.black]
 line-length = 79
 target-version = ["py312"]
@@ -60,4 +66,14 @@ disable = [
     "C0114", # missing-module-docstring
     "C0115", # missing-class-docstring
     "C0116", # missing-function-docstring
+]
+
+[dependency-groups]
+dev = [
+    "black>=24.10.0",
+    "flake8>=7.0.0",
+    "flake8-pyproject>=1.2.4",
+    "isort>=5.13.2",
+    "pre-commit>=4.5.1",
+    "pylint>=4.0.4",
 ]

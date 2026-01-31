@@ -1,8 +1,0 @@
-ultralytics==8.3.208
-supervision==0.26.1
-easyocr==1.7.2
-flake8==7.0.*
-black==24.*
-isort==5.*
-Flake8-pyproject==1.2.3
-pre-commit==4.3.0
