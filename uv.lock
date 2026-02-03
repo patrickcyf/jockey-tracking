@@ -519,6 +519,7 @@ dev = [
     { name = "isort" },
     { name = "pre-commit" },
     { name = "pylint" },
+    { name = "pylint-actions" },
 ]
 test = [
     { name = "pytest" },
@@ -540,6 +541,7 @@ dev = [
     { name = "isort", specifier = ">=5.13.2" },
     { name = "pre-commit", specifier = ">=4.5.1" },
     { name = "pylint", specifier = ">=4.0.4" },
+    { name = "pylint-actions", specifier = ">=0.4.0" },
 ]
 test = [
     { name = "pytest", specifier = ">=9.0.2" },
@@ -1299,6 +1301,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/5a/d2/b081da1a8930d00e3fc06352a1d449aaf815d4982319fab5d8cdb2e9ab35/pylint-4.0.4.tar.gz", hash = "sha256:d9b71674e19b1c36d79265b5887bf8e55278cbe236c9e95d22dc82cf044fdbd2", size = 1571735, upload-time = "2025-11-30T13:29:04.315Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a6/92/d40f5d937517cc489ad848fc4414ecccc7592e4686b9071e09e64f5e378e/pylint-4.0.4-py3-none-any.whl", hash = "sha256:63e06a37d5922555ee2c20963eb42559918c20bd2b21244e4ef426e7c43b92e0", size = 536425, upload-time = "2025-11-30T13:29:02.53Z" },
+]
+
+[[package]]
+name = "pylint-actions"
+version = "0.4.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0f/4c/d1d529c3e7ce80c7f6f7f5bb479f23f30e114b0cf25da5466d18dc22e21a/pylint_actions-0.4.0.tar.gz", hash = "sha256:fec9080a61f8fac68bee4af54d34dd5b42200641161104e7a133ee8793e9b464", size = 2656, upload-time = "2023-05-19T16:26:36.519Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e9/bc/57b9dc2ca798ef10f3e7867ef4446864b8d5aec583c4df8b9b51c86fd659/pylint_actions-0.4.0-py3-none-any.whl", hash = "sha256:9732b5d6a1deadb1110792f0f4fb180907cb4d6711ed6bd8e1ce0f6ec7ecb976", size = 3131, upload-time = "2023-05-19T16:26:35.054Z" },
 ]
 
 [[package]]
