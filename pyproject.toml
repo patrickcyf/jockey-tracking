@@ -15,9 +15,9 @@ classifiers = [
 ]
 
 dependencies = [
-    "ultralytics==8.3.208",
-    "supervision==0.26.1",
-    "easyocr==1.7.2",
+    "ultralytics>=8.3.208",
+    "supervision>=0.26.1",
+    "easyocr>=1.7.2",
 ]
 
 [tool.black]
