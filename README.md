@@ -31,6 +31,6 @@ Download pretrained model for <a href='https://drive.google.com/file/d/1ep0ty__v
 $ tar -zxvf detector_weights.tar.gz
 </pre>
 Detect and track jockeys
-<pre>$ un run python predict.py --source_weights_path runs/detect/train/weights/best.pt --source_video_path racing_20250131R8.mp4 --target_video_path output.mp4 </pre>
+<pre>$ uv run python src/predict.py --source_weights_path runs/detect/train/weights/best.pt --source_video_path racing_20250131R8.mp4 --target_video_path output.mp4 </pre>
 <img src="examples/output.jpg" width="900px" height="500px"/>
 
