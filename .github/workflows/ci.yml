@@ -22,7 +22,15 @@ jobs:
         python-version: '3.12'
         enable-cache: true
     - name: Install project dependencies and pylint
-      run: uv sync --locked --all-extras --dev
+      run: uv sync --locked --all-extras --all-groups
     - name: Analysing the code with pylint
       run: |
         uv run pylint --output-format=github $(git ls-files '*.py')
+    - name: Run tests with coverage and generate HTML report
+      run: |
+        uv run pytest --cov=src --cov-report=html:htmlcov --cov-report=term-missing --cov-fail-under=70
+    - name: Upload coverage report artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-html-report
+        path: htmlcov
