@@ -59,6 +59,7 @@ extend-ignore = ["E203", "E501", "W503"]
 
 [tool.pylint.main]
 source-roots = ["."]
+ignore = ["tests"]
 
 [tool.pylint."MESSAGES CONTROL"]
 disable = [
