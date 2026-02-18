@@ -1,4 +1,5 @@
 import argparse
+import sys
 
 import easyocr
 import supervision as sv
@@ -70,7 +71,7 @@ def process_video(
             sink.write_frame(frame)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Detector for jockey during horse racing"
     )
@@ -114,3 +115,11 @@ if __name__ == "__main__":
         confidence_threshold=args.confidence_threshold,
         iou_threshold=args.iou_threshold,
     )
+
+
+def init():
+    if __name__ == "__main__":
+        sys.exit(main())
+
+
+init()
